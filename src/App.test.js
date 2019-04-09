@@ -15,6 +15,10 @@ it("renders successfully", () => {
 });
 
 it("renders hello world", () => {
-  const helpers = render(<App />);
-  console.log(helpers);
+  const { getByText, queryByText, debug } = render(<App />);
+
+  //debug();
+
+  // getByText(/hello world/i);
+  expect(queryByText(/hello world/i)).not.toBeNull();
 });
