@@ -1,28 +1,31 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { Component } from 'react';
+
+import Greeting from './Greeting/Greeting';
+import './App.css';
 
 class App extends Component {
+  state = {
+    greeting: 'No greeting for you',
+  };
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Hello World
-          </a>
-        </header>
-      </div>
+      <>
+        <h2>Hello World</h2>
+        <button onClick={this.greet}>Greet</button>
+        <button onClick={this.bye}>Bye</button>
+        <Greeting msg={this.state.greeting} />
+      </>
     );
   }
+
+  greet = () => {
+    this.setState({ greeting: 'Hello Web XVII' });
+  };
+
+  bye = () => {
+    this.setState({ greeting: 'Bye Web XVII' });
+  };
 }
 
 export default App;

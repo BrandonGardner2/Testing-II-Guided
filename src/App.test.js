@@ -1,24 +1,45 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { render } from "react-testing-library";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { render, fireEvent } from 'react-testing-library'; // <<<<<<<<<<<<<<<<<
+import 'jest-dom/extend-expect'; // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-import App from "./App";
+import App from './App';
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+describe('<App />', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<App />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
 
-it("renders successfully", () => {
-  render(<App />);
-});
+  it('renders successfully', () => {
+    render(<App />);
+  });
 
-it("renders hello world", () => {
-  const { getByText, queryByText, debug } = render(<App />);
+  it('renders Hello World', () => {
+    const { getByText, queryByText, debug } = render(<App />);
 
-  //debug();
+    // debug();
 
-  // getByText(/hello world/i);
-  expect(queryByText(/hello world/i)).not.toBeNull();
+    getByText(/hello world/i);
+    // expect(queryByText(/hello world/i)).not.toBeNull();
+  });
+
+  it('greets the team', () => {
+    const { getByText } = render(<App />);
+
+    const button = getByText(/greet/i);
+
+    fireEvent.click(button);
+    getByText(/hello web xvii/i);
+  });
+
+  it('says good bye', () => {
+    const { getByText } = render(<App />);
+
+    const button = getByText(/bye/i);
+
+    fireEvent.click(button);
+    getByText(/bye web xvii/i);
+  });
 });
