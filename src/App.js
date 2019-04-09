@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Greeting from './Greeting/Greeting';
-import './App.css';
+import Greeting from "./Greeting/Greeting";
+import "./App.css";
 
 class App extends Component {
   state = {
-    greeting: 'No greeting for you',
+    greeting: "No greeting for you"
   };
 
   render() {
@@ -20,11 +20,11 @@ class App extends Component {
   }
 
   greet = () => {
-    this.setState({ greeting: 'Hello Web XVII' });
+    this.setState({ greeting: "Hello Web XVII" });
   };
 
   bye = () => {
-    this.setState({ greeting: 'Bye Web XVII' });
+    this.setState({ greeting: "Bye Web XVII" });
   };
 }
 
